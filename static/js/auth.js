@@ -43,8 +43,8 @@ const requestSignup= async (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(postData)
         }
-        const r = await fetch(`http://localhost:3000/auth/signup`, options)
-        const data = await r.json()
+        const res = await fetch(`http://localhost:3000/auth/signup`, options)
+        const data = await res.json()
         if (data.err){ throw Error(data.err) }
         requestLogin(e);
         form.reset()
