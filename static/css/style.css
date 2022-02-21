@@ -1,3 +1,4 @@
+/* login and signup forms styling */
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 * {
   margin: 0;
@@ -240,7 +241,7 @@ input[type="checkbox"] {
 
 /* The Modal (background) */
 .modal {
-  display: flex;
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
