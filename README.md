@@ -18,7 +18,7 @@ The server side is stored in [this repo](https://github.com/Dafe-akaka/habit-tra
 ### Installation
 
 1. Clone this repo using `git clone`
-2. Enter the directory `cd habit-tracker-server`
+2. Enter the directory `cd habit-tracker-client`
 3. Install dependencies `npm install`
    
 ### Usage
@@ -31,10 +31,7 @@ The server side is stored in [this repo](https://github.com/Dafe-akaka/habit-tra
 ### Technologies
 
 * [node.js 🔗](https://nodejs.org/) 
-* [express 🔗](https://expressjs.com/)
-* [DB??🔗]( )
-* [docker 🔗](https://docker.com/)
-* [Jest 🔗](https://jestjs.io/)
+
 
 ### Deployment
 
@@ -45,9 +42,9 @@ The server is currently deployed at ...heroku.....
 
 ## Design & Implementation
 
-To create this 
+To create this ...
 
-### Routes
+<!-- ### Routes
 
 
 | **URL** | **HTTP Verb** |  **Action**| **Result (to edit)** 
@@ -58,21 +55,7 @@ To create this
 | /habits/:id      | GET       | show   | Return a specific thing |  
 | /habits/:id/edit | GET       | edit   | Return a thing of a specific thing |     
 | /habits/:id      | PATCH/PUT | update | Add or remove a specific thing |
-| /habits/:id      | DELETE    | destroy| Delete something specific |
-
-### BD Structure
-
-
-
-#### `POST /habits` request body
-
-
-
-#### `PATCH ` request body
-
-
-#### `POST ` request body
-
+| /habits/:id      | DELETE    | destroy| Delete something specific | -->
 
 
 ## Changelog
@@ -85,18 +68,15 @@ To create this
 
 ## Remaining Bugs
 
-- [ ] Blank comments are accepted into the data.
+
 
 ## Pitfalls & Discoveries
 
-* Finding a post (in the Posts array) by one of its properties using the [`Array.find`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) function.
 
-* `express.Router` can be used as a middleware to handle routes.
 
 ## Future Features
 
-* Post moderation by adding a password protected delete route into the API.
-* Nicknames to be added to posts alongside the title and message.
+
 
 ## License
 
