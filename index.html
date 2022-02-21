@@ -5,10 +5,90 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/habit-icon-8.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./static/css/style.css">
     <title>Habit tracker</title>
     <script defer src='./bundle.js'></script>
 </head>
-<body>
+    <nav class="navbar">
+        <div class="logo">ReinHabit</div>
+        <ul class="nav-links">
+        <input type="checkbox" id="checkbox_toggle" />
+    <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+<!-- NAVIGATION MENUS -->
+    <div class="menu">
+        <li><a href="#logout">Logout</a></li>
+    </div>
+    </ul>
+    </nav>
+    <body>
+        <!-- modal -->
+        <div id="myModal" class="modal">
+        <div class="modal-content">
+            <header class=" modal-header"><span class="close">&times;</span>
+                <h2>Data</h2> 
+            </header>
+            <canvas> </canvas>
+            </div>
+        </div>
+      
+      </div>
+        <!-- Login form -->
+        <div class="wrapper">
+           <div class="title-text">
+              <div class="title login">
+                 ReinHabit
+              </div>
+              <div class="title signup">
+                 ReinHabit
+              </div>
+           </div>
+           <div class="form-container">
+              <div class="slide-controls">
+                 <input type="radio" name="slide" id="login" checked>
+                 <input type="radio" name="slide" id="signup">
+                 <label for="login" class="slide login">Login</label>
+                 <label for="signup" class="slide signup">Signup</label>
+                 <div class="slider-tab"></div>
+              </div>
+              <div class="form-inner">
+                 <form class="login">
+                    <div class="field">
+                       <input id='email' type="text" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                       <input id='password' type="password" placeholder="Password" required>
+                    </div>
+                    <div class="pass-link">
+                       <a href="#">Forgot password?</a>
+                    </div>
+                    <div class="field btn">
+                       <div class="btn-layer"></div>
+                       <input type="submit" value="Login">
+                    </div>
+                    <div class="signup-link">
+                       Not a member? <a href="">Signup now</a>
+                    </div>
+                 </form>
+                 <!-- signup form -->
+                 <form class="signup">
+                    <div class="field">
+                       <input id='username' type="text" placeholder="Username" required>
+                    </div>
+                    <div class="field">
+                       <input id='Semail' type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                       <input id='Spassword' type="password" placeholder="Password" required>
+                    </div>
+                    <div class="field btn">
+                       <div class="btn-layer"></div>
+                       <input type="submit" value="Signup">
+                    </div>
+                 </form>
+              </div>
+           </div>
+        </div>
+        
     
 </body>
 </html>
