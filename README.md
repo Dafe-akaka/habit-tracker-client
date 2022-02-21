@@ -31,7 +31,10 @@ The server side is stored in [this repo](https://github.com/Dafe-akaka/habit-tra
 ### Technologies
 
 * [node.js 🔗](https://nodejs.org/) 
-
+* [html 🔗](https://developer.mozilla.org/en-US/docs/Web/HTML) 
+* [CSS 🔗](https://developer.mozilla.org/en-US/docs/Web/CSS) 
+* [pureCSS 🔗](https://purecss.io/) 
+* [Jest 🔗](https://jestjs.io/)
 
 ### Deployment
 
