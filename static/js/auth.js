@@ -58,7 +58,6 @@ const instantLogin = async (e) => {
 
 const requestLogin = async (e) => {
   e.preventDefault();
-  console.log(e.target)
   const form = e.target
   let email = e.target.email.value 
   let password = e.target.password.value 
@@ -98,9 +97,6 @@ function logout(){
     window.location.hash = '#login';
 }
 
-function currentUser(){
-    const username = localStorage.getItem('username')
-    return username;
-}
 
-module.exports = { requestLogin, requestSignup, login, logout, currentUser };
+
+module.exports = { requestLogin, requestSignup, login, logout };

@@ -1,4 +1,5 @@
 const {requestLogin, requestSignup} = require('./auth')
+const {updateContent} = require('./render')
 const loginText = document.querySelector(".title-text .login");
 const loginForm = document.querySelector("form.login");
 const loginBtn = document.querySelector("label.login");
@@ -21,5 +22,6 @@ signupLink.onclick = (()=>{
   return false;
 });
 
+window.addEventListener('hashchange', updateContent);
 loginForm.addEventListener("submit", requestLogin )
 signupForm.addEventListener("submit",requestSignup)
