@@ -19,8 +19,33 @@ function updateContent(){
 }
 
 const updateMain = (path) => {
-    console.log(path)
-    console.log("moving to dash")
+    console.log("updating")
+    if (path) {
+        switch(path){
+            case '#login':
+                renderLoginForm(); break;
+            case '#register':
+                renderRegisterForm(); break;
+            case '#dashboard':
+                renderDash(); break;
+            case '#profile':
+                renderProfile(); break;
+            default:
+                render404(); break;
+        }
+    } else {
+        renderHomepage();
+    }
+}
+
+const renderDash = () => {
+    const forms =document.querySelector('.wrapper')
+    forms.style.display = 'none'
+    const backGround = document.body
+    backGround.style.background = 'white'
+    const nav =document.querySelector('.navbar')
+    nav.style.display = 'flex'
+
 }
 
 module.exports = {updateContent}

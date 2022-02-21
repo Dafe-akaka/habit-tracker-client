@@ -6,20 +6,23 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-html,
+
 body {
   display: grid;
   height: 100%;
   width: 100%;
   place-items: center;
   background: -webkit-linear-gradient(left, #0a0a0a, #5f012d);
+  
 }
+
 ::selection {
   background: #5f012d;
   color: #fff;
 }
 .wrapper {
   display: null;
+  margin-top: 5%;
   overflow: hidden;
   max-width: 390px;
   background: #fff;
