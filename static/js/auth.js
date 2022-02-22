@@ -1,4 +1,5 @@
 const jwt_decode = require('jwt-decode');
+const {getAllHabits} = require('./requests')
 
 
 
@@ -91,6 +92,7 @@ function login(token){
     const userWelcome = document.querySelector('.habitTitle')
     userWelcome.textContent = `Welcome ${user.username} create a new habit here`
     window.location.hash = '#dashboard';
+    getAllHabits()
 }
 
 
