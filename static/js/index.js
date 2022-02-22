@@ -1,3 +1,4 @@
+const {logout} = require('./render')
 const {requestLogin, requestSignup} = require('./auth')
 const {updateContent} = require('./render')
 const loginText = document.querySelector(".title-text .login");
@@ -6,6 +7,7 @@ const loginBtn = document.querySelector("label.login");
 const signupForm = document.querySelector("form.signup")
 const signupBtn = document.querySelector("label.signup");
 const signupLink = document.querySelector("form .signup-link a");
+const logoutBtn = document.querySelector("#logout")
 
 signupBtn.onclick = (()=>{
   loginForm.style.marginLeft = "-50%";
@@ -25,3 +27,4 @@ signupLink.onclick = (()=>{
 window.addEventListener('hashchange', updateContent);
 loginForm.addEventListener("submit", requestLogin )
 signupForm.addEventListener("submit",requestSignup)
+logoutBtn.addEventListener("click", logout)
