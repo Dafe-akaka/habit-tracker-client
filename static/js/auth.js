@@ -49,7 +49,6 @@ const instantLogin = async (e) => {
         if (!data.success) {
         throw new Error("Login not authorised");
         }
-        form.reset()
         login(data.token);
   } catch (err) {
         console.warn(err);
@@ -89,6 +88,8 @@ function login(token){
     localStorage.setItem("token", token);
     localStorage.setItem("username", user.username);
     localStorage.setItem("userEmail", user.email);
+    const userWelcome = document.querySelector('.habitTitle')
+    userWelcome.textContent = `Welcome ${user.username} create a new habit here`
     window.location.hash = '#dashboard';
 }
 

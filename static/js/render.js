@@ -12,7 +12,7 @@ function updateContent(){
     if (privateRoutes.includes(path) && !currentUser()){
         window.location.hash = '#login';
     } else if (!privateRoutes.includes(path) && currentUser()) {
-        window.location.hash = '#dashboard';
+        window.location.hash = '#login';
     } else {
         updateMain(path);
     }
