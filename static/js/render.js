@@ -2,6 +2,11 @@
 const publicRoutes = ['#', '#login', '#signup'];
 const privateRoutes = ['#dashboard', '#profile'];
 
+function logout(){
+    localStorage.clear();
+    window.location.hash = '#login';
+}
+
 function currentUser(){
     const username = localStorage.getItem('username')
     return username;
@@ -10,9 +15,9 @@ function currentUser(){
 function updateContent(){
     const path = window.location.hash;
     if (privateRoutes.includes(path) && !currentUser()){
-        window.location.hash = '#login';
+        updateMain('#login');
     } else if (!privateRoutes.includes(path) && currentUser()) {
-        window.location.hash = '#login';
+        updateMain('#login')
     } else {
         updateMain(path);
     }
@@ -23,13 +28,9 @@ const updateMain = (path) => {
     if (path) {
         switch(path){
             case '#login':
-                renderLoginForm(); break;
-            case '#register':
                 renderRegisterForm(); break;
             case '#dashboard':
                 renderDash(); break;
-            case '#profile':
-                renderProfile(); break;
             default:
                 render404(); break;
         }
@@ -48,6 +49,12 @@ const renderDash = () => {
     const habitForm = document.querySelector('.habit-container')
     habitForm.style.display = 'flex'
 
+}
+
+const renderRegisterForm = () => {
+    logout()
+    const refresh = location.reload()
+    return refresh
 }
 
 module.exports = {updateContent}

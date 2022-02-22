@@ -93,11 +93,8 @@ function login(token){
     window.location.hash = '#dashboard';
 }
 
-function logout(){
-    localStorage.clear();
-    window.location.hash = '#login';
-}
 
 
 
-module.exports = { requestLogin, requestSignup, login, logout };
+
+module.exports = { requestLogin, requestSignup, login };
