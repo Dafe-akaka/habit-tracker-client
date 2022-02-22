@@ -45,6 +45,8 @@ const renderDash = () => {
     backGround.style.background = 'white'
     const nav =document.querySelector('.navbar')
     nav.style.display = 'flex'
+    const habitForm = document.querySelector('.habit-container')
+    habitForm.style.display = 'flex'
 
 }
 
