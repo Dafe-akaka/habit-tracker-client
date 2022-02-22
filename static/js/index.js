@@ -1,4 +1,5 @@
 const {logout} = require('./render')
+const {createHabit} = require('./requests')
 const {requestLogin, requestSignup} = require('./auth')
 const {updateContent} = require('./render')
 const loginText = document.querySelector(".title-text .login");
@@ -8,6 +9,7 @@ const signupForm = document.querySelector("form.signup")
 const signupBtn = document.querySelector("label.signup");
 const signupLink = document.querySelector("form .signup-link a");
 const logoutBtn = document.querySelector("#logout")
+const habitForm = document.querySelector("#habitForm")
 
 signupBtn.onclick = (()=>{
   loginForm.style.marginLeft = "-50%";
@@ -28,3 +30,4 @@ window.addEventListener('hashchange', updateContent);
 loginForm.addEventListener("submit", requestLogin )
 signupForm.addEventListener("submit",requestSignup)
 logoutBtn.addEventListener("click", logout)
+habitForm.addEventListener('submit', createHabit)
