@@ -28,10 +28,11 @@ const getAllHabits = async () => {
 
 const createHabit = async (e) => {
     e.preventDefault();
+    const form = e.target
     let username = localStorage.getItem('username')
     let frequncy = e.target.frequency.value
     let habit = e.target.habit.value
-    console.log(frequncy,habit)
+    let feed = document.querySelector('#habits')
     try {
         const habitData = {
             habit: habit,
@@ -49,6 +50,8 @@ const createHabit = async (e) => {
             console.warn(data.err);
             logout();
         }
+        feed.innerHTML = ""
+        form.reset()
         console.log("the new updated habit",getAllHabits())
 
         return data;
@@ -56,6 +59,8 @@ const createHabit = async (e) => {
         console.warn(err);
     }
 }
+
+
 
 
 

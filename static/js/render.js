@@ -18,7 +18,25 @@ const renderHabitPost = (data) => {
   title.textContent = data.habitdescription;
   card.appendChild(title);
 
-  const progress = updateProgressbar(data);
+  console.log(data);
+  console.log(data.currentfrequency, data.frequency);
+  let value = Math.round((data.currentfrequency / data.frequency) * 100);
+  console.log(value)
+
+  const progress = document.createElement("div");
+  progress.classList.add("progress");
+
+  //create progress_fill
+  const progressFill = document.createElement("div");
+  progressFill.classList.add("progress__fill");
+  progressFill.style.width = `${value}%`;
+
+  // add text to fill
+  const progress__text = document.createElement("span");
+  progress__text.classList.add("progress__text");
+  progress__text.textContent = `${value}%`;
+  progressFill.appendChild(progress__text);
+  progress.appendChild(progressFill);
 
   //create progress bar
   card.appendChild(progress);
@@ -68,6 +86,7 @@ const renderHabitPost = (data) => {
 
   updateBtn.addEventListener("click", updateHabit);
   card.appendChild(controls);
+  deleteBtn.addEventListener("click", deleteHabit)
 };
 
 function currentUser() {
@@ -147,39 +166,18 @@ const renderStreaks = (data) => {
   return streaks;
 };
 
-const updateProgressbar = (data) => {
-  console.log(data);
-  console.log(data.currentfrequency, data.frequency);
-  let value = Math.round((data.currentfrequency / data.frequency) * 100);
-  console.log(value)
-
-  const progress = document.createElement("div");
-  progress.classList.add("progress");
-
-  //create progress_fill
-  const progressFill = document.createElement("div");
-  progressFill.classList.add("progress__fill");
-  progressFill.style.width = `${value}%`;
-
-  // add text to fill
-  const progress__text = document.createElement("span");
-  progress__text.classList.add("progress__text");
-  progress__text.textContent = `${value}%`;
-  progressFill.appendChild(progress__text);
-  progress.appendChild(progressFill);
 
   
 
-  return progress;
-};
+
+
 
 const updateHabit = async (e) => {
   e.preventDefault();
-  console.log(e.target);
-  console.log("update button clicked");
   let username = localStorage.getItem("username");
   let habit_id = e.target.id
-  console.log(habit_id);
+  let feed = document.querySelector('#habits')
+  console.log(feed)
   try {
     const habitData = {
       habit_id: habit_id,
@@ -200,13 +198,41 @@ const updateHabit = async (e) => {
       logout();
     }
     location.hash = `#dashboard`
-    setPosts(data)
+    // setPosts(data)
 
     return data;
   } catch (err) {
     console.warn(err);
   }
 };
+
+const deleteHabit = async (e) => {
+  const habit_id =  e.target.id;
+  try {
+    const options = {
+      method: "DELETE",
+      headers: new Headers({'Authorization': localStorage.getItem('token')}),
+    };
+    const res = await fetch(
+      `http://localhost:3000/habits/delete/${habit_id}`,
+      options
+    );
+    const data = await res.json();
+    console.log(data);
+    if (data.err) {
+      console.warn(data.err);
+      logout();
+    }
+     const container = e.target.parentElement.parentElement.parentElement.parentElement.parentElement
+     console.log()
+     container.innerHTML = ""
+
+    return data;
+  } catch (err) {
+    console.warn(err);
+  }
+
+}
 
 const setPosts = (habits) => {
   habits.forEach((habit) => renderHabitPost(habit));
