@@ -14,7 +14,7 @@ const habitForm = document.querySelector("#habitForm")
 signupBtn.onclick = (()=>{
   loginForm.style.marginLeft = "-50%";
   loginText.style.marginLeft = "-50%";
-   window.location.hash =`#signup`
+   location.hash =`#signup`
 });
 loginBtn.onclick = (()=>{
   loginForm.style.marginLeft = "0%";

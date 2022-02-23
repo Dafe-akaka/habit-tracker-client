@@ -5,11 +5,12 @@ const getAllHabits = async () => {
     try {
         let email = localStorage.getItem('userEmail')
         console.log(email)
+        let username = localStorage.getItem('username')
 
         // const options = {
         //     headers: new Headers({'Authorization': localStorage.getItem('token')}),
         // }
-        const res = await fetch(`http://localhost:3000/habits/habits/3/test88`);
+        const res = await fetch(`http://localhost:3000/habits/6/${username}`);
         const data = await res.json();
         console.log(data)
         if(data.err){
@@ -20,6 +21,7 @@ const getAllHabits = async () => {
     } catch (err) {
         console.warn(err);
     }
+
 }
 
 
