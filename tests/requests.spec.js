@@ -12,7 +12,7 @@ describe('api', () => {
     });
 
     describe('requests', () => {
-        
+
         describe('get requests ', () => {
 
             test('it makes a get request', () => {
@@ -29,8 +29,8 @@ describe('api', () => {
                 const fakeSubmitEvent = {
                     preventDefault: jest.fn(),
                     target: {
-                       frequency: {value: 10}, // title: {value: "Homer moment"},
-                       habit: {value: "running"} ,//message: {value: "Forgetting to add a script tag"},
+                       frequency: {value: 10}, 
+                       habit: {value: "running"} 
                        }
                 };
 

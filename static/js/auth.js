@@ -98,4 +98,4 @@ function login(token){
 
 
 
-module.exports = { requestLogin, requestSignup, login };
+module.exports = { requestLogin, requestSignup, login, instantLogin };
