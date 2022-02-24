@@ -19,7 +19,7 @@ signupBtn.onclick = (()=>{
 loginBtn.onclick = (()=>{
   loginForm.style.marginLeft = "0%";
   loginText.style.marginLeft = "0%";
-  window.location.hash =`#login`
+  location.hash =`#login`
 });
 signupLink.onclick = (()=>{
   signupBtn.click();

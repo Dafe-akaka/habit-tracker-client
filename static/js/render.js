@@ -6,6 +6,7 @@ function logout() {
   localStorage.clear();
   location.hash = "#logout";
 }
+
 const renderHabitPost = (data) => {
   //create two card
   const card = document.createElement("div");
@@ -47,8 +48,8 @@ const renderHabitPost = (data) => {
   const updateBtn = document.createElement("button");
   updateBtn.classList.add("btn");
 
-  const editBtn = document.createElement("button");
-  editBtn.classList.add("btn");
+  const graphBtn = document.createElement("button");
+  graphBtn.classList.add("btn");
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add("btn");
 
@@ -58,10 +59,10 @@ const renderHabitPost = (data) => {
   update.innerText = "+";
   updateBtn.appendChild(update);
 
-  const edit = document.createElement("span");
-  edit.id = data.habit_id;
-  edit.innerText = "data";
-  editBtn.appendChild(edit);
+  const graph = document.createElement("span");
+  graph.id = data.habit_id;
+  graph.innerText = "graph";
+  graphBtn.appendChild(graph);
 
   const del = document.createElement("span");
   del.id = data.habit_id;
@@ -69,7 +70,7 @@ const renderHabitPost = (data) => {
   deleteBtn.appendChild(del);
 
   controls.appendChild(updateBtn);
-  controls.appendChild(editBtn);
+  controls.appendChild(graphBtn);
   controls.appendChild(deleteBtn);
 
   const box = document.createElement("div");
@@ -84,10 +85,32 @@ const renderHabitPost = (data) => {
   const wrapper = document.querySelector("#habits");
   wrapper.appendChild(habitContainer);
 
-  updateBtn.addEventListener("click", updateHabit);
   card.appendChild(controls);
+  updateBtn.addEventListener("click", updateHabit);
   deleteBtn.addEventListener("click", deleteHabit)
+  graphBtn.addEventListener("click", renderGraph)
 };
+const modalEvent = () => {
+  const modal = document.querySelector(".modal");
+    const closeModal = document.querySelector(".close");
+    modal.style.display = "block";
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+  
+    // When the user clicks anywhere outside of the modal, close it
+    window.addEventListener("click", (event) => {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    });
+}
+
+const renderGraph = (e) => {
+
+    modalEvent()
+  
+}
 
 function currentUser() {
   const username = localStorage.getItem("username");
