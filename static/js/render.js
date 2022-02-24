@@ -1,4 +1,5 @@
 const Chart = require('chart.js');
+const dayjs = require('dayjs')
 
 const privateRoutes = ["#dashboard", "#profile"];
 
@@ -19,12 +20,15 @@ const renderHabitPost = (data) => {
   title.textContent = data.habitdescription;
   card.appendChild(title);
 
-  console.log(data);
   console.log(data.currentfrequency, data.frequency);
   let value = Math.round((data.currentfrequency / data.frequency) * 100);
-  console.log(value)
 
   const progress = document.createElement("div");
+  const habitCount = document.createElement("div")
+  const countText = document.createElement("p")
+  countText.innerText = `${data.currentfrequency } out of ${data.frequency}`
+  habitCount.appendChild(countText)
+
   progress.classList.add("progress");
 
   //create progress_fill
@@ -41,6 +45,7 @@ const renderHabitPost = (data) => {
 
   //create progress bar
   card.appendChild(progress);
+  card.appendChild(habitCount)
 
   ///add buttons to card  (+, edit, delete)
   const controls = document.createElement("div");
@@ -91,20 +96,43 @@ const renderHabitPost = (data) => {
   graphBtn.addEventListener("click", renderGraph)
 };
 
-// const getGraphData = (id) => {
-//   try {
-//     let email = localStorage.getItem('userEmail')
-//     const res = await fetch(`http://localhost:3000/habits/graph-data/${username}`);
-//     const data = await res.json();
-//     if(data.err){
-//         console.warn(data.err);
-//         logout();
-//     }
-//     return data
-// } catch (err) {
-//     console.warn(err);
-// }
-// }
+const setData = async (object, axis) => {
+  let obj = await object
+  let xLabel = []
+  let yLabel = []
+
+  for (const key in obj) {
+    let value = obj[key]
+    if (value.length > 6) {
+      const formatDate = dayjs(value).format('DD/MM/YYYY')
+      xLabel.unshift(formatDate)
+    } else if (value.length < 6) {
+      let data = parseInt(value)
+      yLabel.unshift(data)
+    } else {
+      throw new Error("could not set data")
+    }
+  }
+
+  let label = axis === "y" ? yLabel : xLabel
+  return label
+
+}
+
+const getGraphData = async () => {
+  try {
+    let email = localStorage.getItem('userEmail')
+    const res = await fetch(`http://localhost:3000/habits/graph-data/${email}`);
+    const data = await res.json();
+    if(data.err){
+        console.warn(data.err);
+        logout();
+    }
+    return data
+} catch (err) {
+    console.warn(err);
+}
+}
 
 
 const modalEvent = () => {
@@ -124,18 +152,26 @@ const modalEvent = () => {
     return true
 }
 
-const renderGraph = (e) => {
+
+
+const renderGraph = async () => {
 
   modalEvent()
+  let obj = getGraphData()
+  let xAxis = await setData(obj, "x")
+  let yAxis = await setData(obj, "y")
+
+  console.log(xAxis,yAxis)
+  
 
   const ctx = document.getElementById('myChart').getContext('2d');
   const myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],  // x label
+        labels: xAxis,  // x label
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3], //data to plot o
+            label: 'Tracked habit',
+            data: yAxis, //data to plot o
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -207,10 +243,8 @@ const updateMain = (path) => {
         renderDash();
         break;
       case "#signup":
-        console.log("public route");
         break;
       case "#login":
-        console.log("public route");
         break;
       default:
         render404();
@@ -264,10 +298,11 @@ const updateHabit = async (e) => {
   let username = localStorage.getItem("username");
   let habit_id = e.target.id
   let feed = document.querySelector('#habits')
-  console.log(feed)
+  console.log("this is the feed",feed)
   try {
     const habitData = {
       habit_id: habit_id,
+      username: username
     };
     const options = {
       method: "POST",
@@ -279,12 +314,13 @@ const updateHabit = async (e) => {
       options
     );
     const data = await res.json();
-    console.log(data);
+    console.log("this is the data getting sent back",data);
     if (data.err) {
       console.warn(data.err);
       logout();
     }
     location.hash = `#dashboard`
+    feed.innerHTML = ""
     setPosts(data)
 
     return data;
@@ -305,7 +341,6 @@ const deleteHabit = async (e) => {
       options
     );
     const data = await res.json();
-    console.log(data);
     if (data.err) {
       console.warn(data.err);
       logout();

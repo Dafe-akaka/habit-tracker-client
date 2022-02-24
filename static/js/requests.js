@@ -10,9 +10,8 @@ const getAllHabits = async () => {
         // const options = {
         //     headers: new Headers({'Authorization': localStorage.getItem('token')}),
         // }
-        const res = await fetch(`http://localhost:3000/habits/6/${username}`);
+        const res = await fetch(`http://localhost:3000/habits/habits/6/${username}`);
         const data = await res.json();
-        console.log(data)
         if(data.err){
             console.warn(data.err);
             logout();
@@ -45,7 +44,6 @@ const createHabit = async (e) => {
         }
         const res = await fetch(`http://localhost:3000/habits/${username}`, options);
         const data = await res.json();
-        console.log(data)
         if(data.err){
             console.warn(data.err);
             logout();

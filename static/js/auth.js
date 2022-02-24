@@ -23,7 +23,6 @@ const requestSignup= async (e) => {
         const res = await fetch(`http://localhost:3000/auth/register`, options)
         const data = await res.json()
         if (data.err){ throw Error(data.err) }
-        console.log('user created')
         instantLogin(e);
         form.reset()
     } catch (err) {
