@@ -365,4 +365,4 @@ const setPosts = (habits) => {
 
 
 
-module.exports = { renderRegisterForm, renderGraph, updateContent, logout, renderHabitPost, setPosts, deleteHabit, updateHabit, getGraphData};
+module.exports = { renderRegisterForm, renderGraph, updateContent, logout, renderHabitPost, setPosts, deleteHabit, updateHabit, getGraphData, modalEvent};
