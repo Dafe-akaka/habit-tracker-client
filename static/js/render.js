@@ -98,31 +98,33 @@ const renderHabitPost = (data) => {
 
 const setData = async (object, axis) => {
   let obj = await object
-  let xLabel = []
-  let yLabel = []
 
-  for (const key in obj) {
-    let value = obj[key]
-    if (value.length > 6) {
+  const xLabel = () => {
+    let arr = []
+    for (const value of obj) {
+      console.log("this is what the date is", value)
       const formatDate = dayjs(value).format('DD/MM/YYYY')
-      xLabel.unshift(formatDate)
-    } else if (value.length < 6) {
-      let data = parseInt(value)
-      yLabel.unshift(data)
-    } else {
-      throw new Error("could not set data")
-    }
+      arr.unshift(formatDate)
+    } 
+    return arr
   }
 
-  let label = axis === "y" ? yLabel : xLabel
-  return label
+  const yLabel = () => {
+    let arr = []
+    for (const value of obj) {
+      arr.unshift(value)
+    } 
+    return arr
+  }  
+
+    let data = axis === "y" ? yLabel() : xLabel() 
+  return data
 
 }
 
-const getGraphData = async () => {
+const getGraphData = async (habit_id) => {
   try {
-    let email = localStorage.getItem('userEmail')
-    const res = await fetch(`http://localhost:3000/habits/graph-data/${email}`);
+    const res = await fetch(`http://localhost:3000/habits/graphdata/${habit_id}`);
     const data = await res.json();
     if(data.err){
         console.warn(data.err);
@@ -154,12 +156,14 @@ const modalEvent = () => {
 
 
 
-const renderGraph = async () => {
-
+const renderGraph = async (e) => {
+  const id = e.target.id
+  console.log(id)
   modalEvent()
-  let obj = getGraphData()
-  let xAxis = await setData(obj, "x")
-  let yAxis = await setData(obj, "y")
+  let obj = await getGraphData(id)
+  console.log("this is the object getting sent",obj)
+  let xAxis = await setData(obj.dates,"x")
+  let yAxis = await setData(obj.count, "y")
 
   console.log(xAxis,yAxis)
   
