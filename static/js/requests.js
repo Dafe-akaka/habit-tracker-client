@@ -50,8 +50,7 @@ const createHabit = async (e) => {
         }
         feed.innerHTML = ""
         form.reset()
-        console.log("the new updated habit",getAllHabits())
-
+        //console.log("the new updated habit",getAllHabits())
         return data;
     } catch (err) {
         console.warn(err);
