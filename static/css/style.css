@@ -315,8 +315,8 @@ input[type="checkbox"] {
 
 /* habit form styling */
 
-.habitForm {
-  display: none
+.habit-container {
+  display: none;
 }
 
 
