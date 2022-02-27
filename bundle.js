@@ -13376,7 +13376,7 @@ function login(token){
 
 
 
-module.exports = { requestLogin, requestSignup, login };
+module.exports = { requestLogin, requestSignup, login, instantLogin };
 
 },{"./requests":7,"jwt-decode":3}],5:[function(require,module,exports){
 const {logout} = require('./render')
@@ -13783,7 +13783,7 @@ const setPosts = (habits) => {
 
 
 
-module.exports = { updateContent, logout, renderHabitPost, setPosts};
+module.exports = { updateContent, logout, renderHabitPost, setPosts, setData};
 
 },{"chart.js":1,"dayjs":2}],7:[function(require,module,exports){
 const {setPosts} =  require("./render")
@@ -13839,7 +13839,6 @@ const createHabit = async (e) => {
         feed.innerHTML = ""
         form.reset()
         console.log("the new updated habit",getAllHabits())
-
         return data;
     } catch (err) {
         console.warn(err);

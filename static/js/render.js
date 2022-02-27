@@ -367,4 +367,4 @@ const setPosts = (habits) => {
 
 
 
-module.exports = { updateContent, logout, renderHabitPost, setPosts};
+module.exports = { updateContent, logout, renderHabitPost, setPosts, setData};
