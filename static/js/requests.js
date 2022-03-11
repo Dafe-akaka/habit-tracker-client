@@ -10,7 +10,7 @@ const getAllHabits = async () => {
         // const options = {
         //     headers: new Headers({'Authorization': localStorage.getItem('token')}),
         // }
-        const res = await fetch(`http://localhost:3000/habits/habits/6/${username}`);
+        const res = await fetch(`https://reinhabit.herokuapp.com/habits/habits/6/${username}`);
         const data = await res.json();
         if(data.err){
             console.warn(data.err);
@@ -42,7 +42,7 @@ const createHabit = async (e) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(habitData)
         }
-        const res = await fetch(`http://localhost:3000/habits/${username}`, options);
+        const res = await fetch(`https://reinhabit.herokuapp.com/habits/${username}`, options);
         const data = await res.json();
         if(data.err){
             console.warn(data.err);

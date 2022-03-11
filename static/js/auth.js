@@ -20,7 +20,7 @@ const requestSignup= async (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(postData)
         }
-        const res = await fetch(`http://localhost:3000/auth/register`, options)
+        const res = await fetch(`https://reinhabit.herokuapp.com/auth/register`, options)
         const data = await res.json()
         if (data.err){ throw Error(data.err) }
         instantLogin(e);
@@ -44,7 +44,7 @@ const instantLogin = async (e) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(postData),
         };
-        const res = await fetch(`http://localhost:3000/auth/login`, options);
+        const res = await fetch(`https://reinhabit.herokuapp.com/auth/login`, options);
         const data = await res.json();
         if (!data.success) {
         throw new Error("Login not authorised");
@@ -70,7 +70,7 @@ const requestLogin = async (e) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(postData),
         };
-        const res = await fetch(`http://localhost:3000/auth/login`, options);
+        const res = await fetch(`https://reinhabit.herokuapp.com/auth/login`, options);
         const data = await res.json();
         if (!data.success) {
         throw new Error("Login not authorised");

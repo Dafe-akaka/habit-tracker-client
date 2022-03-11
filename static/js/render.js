@@ -124,7 +124,7 @@ const setData = async (object, axis) => {
 
 const getGraphData = async (habit_id) => {
   try {
-    const res = await fetch(`http://localhost:3000/habits/graphdata/${habit_id}`);
+    const res = await fetch(`https://reinhabit.herokuapp.com/habits/graphdata/${habit_id}`);
     const data = await res.json();
     if(data.err){
         console.warn(data.err);
@@ -139,12 +139,7 @@ const getGraphData = async (habit_id) => {
 
 const modalEvent = () => {
   const modal = document.querySelector(".modal");
-    const closeModal = document.querySelector(".close");
     modal.style.display = "block";
-    closeModal.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-  
     // When the user clicks anywhere outside of the modal, close it
     window.addEventListener("click", (event) => {
       if (event.target == modal) {
@@ -314,7 +309,7 @@ const updateHabit = async (e) => {
       body: JSON.stringify(habitData)
     };
     const res = await fetch(
-      `http://localhost:3000/habits/${username}/habits/entries`,
+      `https://reinhabit.herokuapp.com/habits/${username}/habits/entries`,
       options
     );
     const data = await res.json();
@@ -341,7 +336,7 @@ const deleteHabit = async (e) => {
       headers: new Headers({'Authorization': localStorage.getItem('token')}),
     };
     const res = await fetch(
-      `http://localhost:3000/habits/delete/${habit_id}`,
+      `https://reinhabit.herokuapp.com/habits/delete/${habit_id}`,
       options
     );
     const data = await res.json();
