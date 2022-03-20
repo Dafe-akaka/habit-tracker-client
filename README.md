@@ -36,17 +36,6 @@ The server side is stored in [this repo](https://github.com/Dafe-akaka/habit-tra
 * [pureCSS 🔗](https://purecss.io/) 
 * [Jest 🔗](https://jestjs.io/)
 
-### Deployment
-
-This client is currently deployed at .....netlify.....
-
-The server is currently deployed at ...heroku.....
-
-
-## Design & Implementation
-
-To create this ...
-
 <!-- ### Routes
 
 
@@ -59,27 +48,6 @@ To create this ...
 | /habits/:id/edit | GET       | edit   | Return a thing of a specific thing |     
 | /habits/:id      | PATCH/PUT | update | Add or remove a specific thing |
 | /habits/:id      | DELETE    | destroy| Delete something specific | -->
-
-
-## Changelog
-
-* 
-
-## Fixed Bugs
-
-- [x] 
-
-## Remaining Bugs
-
-
-
-## Pitfalls & Discoveries
-
-
-
-## Future Features
-
-
 
 ## License
 

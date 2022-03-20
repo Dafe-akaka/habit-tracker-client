@@ -345,9 +345,7 @@ const deleteHabit = async (e) => {
       logout();
     }
      const container = e.target.parentElement.parentElement.parentElement.parentElement.parentElement
-     console.log()
      container.innerHTML = ""
-
     return data;
   } catch (err) {
     console.warn(err);
@@ -362,4 +360,6 @@ const setPosts = (habits) => {
 
 
 
-module.exports = { updateContent, logout, renderHabitPost, setPosts, setData};
+
+module.exports = { renderRegisterForm, renderGraph, updateContent, logout, renderHabitPost, setPosts, deleteHabit, updateHabit, getGraphData, modalEvent};
+
