@@ -13298,7 +13298,7 @@ const requestSignup= async (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(postData)
         }
-        const res = await fetch(`http://localhost:3000/auth/register`, options)
+        const res = await fetch(`https://reinhabit.herokuapp.com/auth/register`, options)
         const data = await res.json()
         if (data.err){ throw Error(data.err) }
         instantLogin(e);
@@ -13322,7 +13322,7 @@ const instantLogin = async (e) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(postData),
         };
-        const res = await fetch(`http://localhost:3000/auth/login`, options);
+        const res = await fetch(`https://reinhabit.herokuapp.com/auth/login`, options);
         const data = await res.json();
         if (!data.success) {
         throw new Error("Login not authorised");
@@ -13348,7 +13348,7 @@ const requestLogin = async (e) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(postData),
         };
-        const res = await fetch(`http://localhost:3000/auth/login`, options);
+        const res = await fetch(`https://reinhabit.herokuapp.com/auth/login`, options);
         const data = await res.json();
         if (!data.success) {
         throw new Error("Login not authorised");
@@ -13540,7 +13540,7 @@ const setData = async (object, axis) => {
 
 const getGraphData = async (habit_id) => {
   try {
-    const res = await fetch(`http://localhost:3000/habits/graphdata/${habit_id}`);
+    const res = await fetch(`https://reinhabit.herokuapp.com/habits/graphdata/${habit_id}`);
     const data = await res.json();
     if(data.err){
         console.warn(data.err);
@@ -13555,12 +13555,7 @@ const getGraphData = async (habit_id) => {
 
 const modalEvent = () => {
   const modal = document.querySelector(".modal");
-    const closeModal = document.querySelector(".close");
     modal.style.display = "block";
-    closeModal.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-  
     // When the user clicks anywhere outside of the modal, close it
     window.addEventListener("click", (event) => {
       if (event.target == modal) {
@@ -13730,7 +13725,7 @@ const updateHabit = async (e) => {
       body: JSON.stringify(habitData)
     };
     const res = await fetch(
-      `http://localhost:3000/habits/${username}/habits/entries`,
+      `https://reinhabit.herokuapp.com/habits/${username}/habits/entries`,
       options
     );
     const data = await res.json();
@@ -13757,7 +13752,7 @@ const deleteHabit = async (e) => {
       headers: new Headers({'Authorization': localStorage.getItem('token')}),
     };
     const res = await fetch(
-      `http://localhost:3000/habits/delete/${habit_id}`,
+      `https://reinhabit.herokuapp.com/habits/delete/${habit_id}`,
       options
     );
     const data = await res.json();
@@ -13798,7 +13793,7 @@ const getAllHabits = async () => {
         // const options = {
         //     headers: new Headers({'Authorization': localStorage.getItem('token')}),
         // }
-        const res = await fetch(`http://localhost:3000/habits/habits/6/${username}`);
+        const res = await fetch(`https://reinhabit.herokuapp.com/habits/habits/6/${username}`);
         const data = await res.json();
         if(data.err){
             console.warn(data.err);
@@ -13830,7 +13825,7 @@ const createHabit = async (e) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(habitData)
         }
-        const res = await fetch(`http://localhost:3000/habits/${username}`, options);
+        const res = await fetch(`https://reinhabit.herokuapp.com/habits/${username}`, options);
         const data = await res.json();
         if(data.err){
             console.warn(data.err);
