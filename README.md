@@ -60,27 +60,6 @@ To create this ...
 | /habits/:id      | PATCH/PUT | update | Add or remove a specific thing |
 | /habits/:id      | DELETE    | destroy| Delete something specific | -->
 
-
-## Changelog
-
-* 
-
-## Fixed Bugs
-
-- [x] 
-
-## Remaining Bugs
-
-
-
-## Pitfalls & Discoveries
-
-
-
-## Future Features
-
-
-
 ## License
 
 [MIT License 🔗](https://opensource.org/licenses/mit-license.php)
