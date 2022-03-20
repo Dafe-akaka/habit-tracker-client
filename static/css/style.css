@@ -315,6 +315,12 @@ input[type="checkbox"] {
 
 /* habit form styling */
 
+.habit-container {
+  display: none;
+}
+
+
+
 .wrapper .habitTitle {
   width: 50%;
   font-size: 25px;
@@ -323,39 +329,31 @@ input[type="checkbox"] {
   transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.habit-container {
-  display: none;
-}
+/* habits post */
 
 #habits {
+  display: flex;
+  flex-flow: row wrap;
   padding: 3px 0;
   margin-top: 2rem;
 }
 
-/* habits post */
-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .posts-container {
-  background-color: #fff;
     border-radius: 11px;
-    padding: 20px;
-    margin: 10px;
+    padding: 5px;
+    margin: 5px;
 }
 
 .container {
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: center;
   box-shadow: 0 15px 30px 1px grey;
   background: rgba(255, 255, 255, 0.9);
   text-align: center;
   border-radius: 5px;
-  overflow: hidden;
-  margin: 5em auto;
   height: 200px;
   width: 450px;
 }
@@ -381,26 +379,10 @@ section {
   margin: 0;
 }
 
-.container .habit-details h1:before {
-  position: absolute;
-  content: "";
-  right: 0%;
-  top: 0%;
-  transform: translate(25px, -15px);
-  font-family: "Bree Serif", serif;
-  display: inline-block;
-  background: #ffe6e6;
-  border-radius: 5px;
-  font-size: 14px;
-  padding: 5px;
-  color: white;
-  margin: 0;
-}
-
 .container .details > p {
   font-family: "EB Garamond", serif;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   color: #7d7d7d;
 }
 
@@ -424,6 +406,10 @@ section {
   display: inline-block;
   padding: 10px 20px;
   font-size: 1.2em;
+}
+
+.habit_details {
+  border-left: #5f012d;
 }
 
 /* progress bars */
